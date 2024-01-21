@@ -1,0 +1,69 @@
+﻿@startuml
+
+[*] --> GetStatus
+
+GetStatus : Main state for the agent
+GetStatus --> GetFood
+GetStatus --> GetWater
+GetStatus --> GetSleepingPlace
+GetStatus --> GetPartner
+GetStatus --> GetGroup
+GetStatus --> Flee
+
+Flee : Flees from predators
+Flee --> GetStatus
+
+GetWater : Search for water
+GetWater --> Drink
+GetWater --> GetStatus
+GetWater --> Flee
+
+Drink : Satisfying the thirst
+Drink -u> GetStatus
+Drink -u> GetWater
+Drink --> Flee
+
+GetFood : Search or hunt for food
+GetFood --> Eat
+GetFood --> GetStatus
+GetFood --> Flee
+Eat : Satisfying the hunger
+Eat -u> GetStatus
+Eat -u> GetFood
+Eat --> Flee
+
+GetSleepingPlace : Search a sleep place
+GetSleepingPlace --> GetStatus
+GetSleepingPlace --> Sleep
+GetSleepingPlace --> Flee
+Sleep : Sleeps until awake
+Sleep --> Awake
+Awake : Time to get awake form sleep
+Awake --> GetStatus
+
+GetPartner : Search for other gender
+GetPartner --> GetStatus
+GetPartner --> Breeding
+GetPartner --> Socialize
+GetPartner --> Flee
+Breeding : Produces offspring 
+Breeding --> GetStatus
+Breeding --> GetPartner
+Breeding --> Flee
+
+GetGroup : Search conspecific members
+GetGroup --> GetStatus
+GetGroup --> Socialize
+GetGroup --> GetPartner
+GetGroup --> Flee
+GetGroup --> FightAsPack
+FightAsPack : Hunt as a Pack
+FightAsPack --> Eat
+FightAsPack --> Flee
+Socialize : Interact with conspecific members
+Socialize --> GetStatus
+Socialize --> Socialize
+Socialize --> GetGroup
+Socialize --> Flee
+
+@enduml

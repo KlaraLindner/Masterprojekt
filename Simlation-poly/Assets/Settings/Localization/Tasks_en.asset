@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 10c375f6e28b78b4bbc9c1ea4cd34267, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5159299047424
+    m_Localized: "You have to collect abandoned rubbish in your forest to earn 500
+      \xA4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5166437752832
+    m_Localized: Take 10 soil samples to explore your ground and get information
+      about the ground types.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5173450629120
+    m_Localized: Find 5 trees with bark beetle infested and fell them to protect
+      the forest. Then plant 5 more resistant trees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5347338084352
+    m_Localized: Build a weather station to get real time data about your forest.
+      After that, scan the forest with the help of a satellite and get a detailed
+      height map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5345622614016
+    m_Localized: Getting more technical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5171512860672
+    m_Localized: Tree Mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5162658684928
+    m_Localized: Ground detection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152248422400
+    m_Localized: Collect rubbish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144480571392
+    m_Localized: Movement tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5148012175360
+    m_Localized: Use the movement keys (WASD, or arrow keys) to move around in the
+      world. Zoom with your scroll wheel and rotate your camera with the right mouse
+      button.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168797666271232
+    m_Localized: Welcome to your Forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168828574097408
+    m_Localized: To move around, press WASD or the arrow keys. Moving the mouse pointer
+      to the side of the screen allows you to move in that direction, as well. Using
+      the scroll wheel to zoom in or out. Press the right mouse button to rotate
+      the camera. The first task is to move around.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180438067830784
+    m_Localized: The Interface guidance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180764187549696
+    m_Localized: 'Next, you should get familiar with the user interface. Open the
+      info-window via the button with the i-symbol on the top right. There you will
+      find useful information and your current task.
+
+
+      After that you should
+      have a look at the statistics window, the button can be found directly under
+      the info-button.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180440295006208
+    m_Localized: Open the help window and the statistics window.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471022947000320
+    m_Localized: "Now you have to remove rubbish from your forest. You get money
+      for each recycled barrel. The barrels can be picked up by left-clicking. Collect
+      an amount of 500\xA4 (money)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 737433699213312
+    m_Localized: Good job! To get to know your forest better, you have to take some
+      soil samples. For this, a core drilling at different places is recommended.
+      To do this, click on the button that is now visible with the construction symbol
+      and then on a location where you want to drill. Take 10 soil samples.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740358634856448
+    m_Localized: 'Now that you know your soil better, you can activate the soil type
+      view with the button at the bottom left. To switch back, click the button next
+      to it.
+
+
+      Next, you notice that bark beetles are infesting your forest,
+      find and cut down these infested trees. To examine a tree, click on the trunk
+      of it. Find and cut down 5 trees and then plant 5 new trees using the button
+      with the plant icon at the bottom.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760560156139520
+    m_Localized: 'Now you know your forest much better. To gather more information,
+      you should set up a weather station and request a satellite scan. To do this,
+      click on the respective button at the bottom. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775208397955072
+    m_Localized: "You have completed all tasks. Together with the data from the weather
+      station, the satellite measurement and the soil samples, you can now activate
+      the view of the moisture in the soil and a height map at the bottom left.\r\n\r\nAfter
+      you close the window, a survey window will open, please participate. The data
+      is important for my master\u2019s thesis.\r\n\r\nYou can continue to view the
+      simulation afterwards."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775153247051776
+    m_Localized: Congratulations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914356185948160
+    m_Localized: Try each view-mode on the bottom left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914371201556480
+    m_Localized: 'Together with the data from the weather station, the satellite
+      measurement and the soil samples, you can now activate the view of moisture
+      in the soil and an elevation map at the bottom left.
+
+
+
+      Try each view-mode.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914264838201344
+    m_Localized: Data usage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2618661859745792
+    m_Localized: 'Money: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2620056021229568
+    m_Localized: 'Samples: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623019024375808
+    m_Localized: 'Trees found: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623371664678912
+    m_Localized: 'Trees planted: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628780123217920
+    m_Localized: Not finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628818308161536
+    m_Localized: done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628997455273984
+    m_Localized: 'Foward: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629053851885568
+    m_Localized: 'Rotate: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629042518876160
+    m_Localized: 'Right: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629030355394560
+    m_Localized: 'Back: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629013066473472
+    m_Localized: 'Left: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631285108367360
+    m_Localized: 'Opend information window: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631297599004672
+    m_Localized: 'Opend statistics windows: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633667535953920
+    m_Localized: 'Viewed ground typ: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633705301467136
+    m_Localized: 'Viewed height map: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633729963974656
+    m_Localized: 'Viewed arid view: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634767206965248
+    m_Localized: 'Build weather station: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634792091770880
+    m_Localized: 'Took satellite picture: '
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
