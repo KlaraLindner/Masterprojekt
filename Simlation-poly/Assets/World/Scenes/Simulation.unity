@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 263.2012, g: 326.3345, b: 432.20807, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14674,13 +14674,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 130000
+  m_Intensity: 6312.4507
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
-  m_VolumetricDimmer: 1
+  m_VolumetricDimmer: 1.2
   m_LightUnit: 2
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
@@ -14796,7 +14796,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.91214913, b: 0.8349056, a: 1}
-  m_Intensity: 130000
+  m_Intensity: 6312.4507
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -28531,7 +28531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1012889377
 Transform:
   m_ObjectHideFlags: 0
@@ -45093,7 +45093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1681629959
 Transform:
   m_ObjectHideFlags: 0
@@ -55478,6 +55478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2069454855}
   - component: {fileID: 2069454856}
+  - component: {fileID: 2069454857}
   m_Layer: 10
   m_Name: Climate
   m_TagString: Untagged
@@ -55536,6 +55537,21 @@ MonoBehaviour:
   maxDayTemperature: 30
   weatherMinMultiplier: 0.25
   weatherMaxMultiplier: 0.35
+--- !u!114 &2069454857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069454854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe916953015c184c91901d6ab6ea0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAssetData: {fileID: 4900000, guid: 659c7c498ebe5634eb0f03f928072ec5, type: 3}
+  currentWeatherList:
+    weatherData: []
 --- !u!1 &2083821162
 GameObject:
   m_ObjectHideFlags: 0
