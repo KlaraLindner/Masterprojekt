@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utility;
 using World.Agents;
 using World.Agents.Modifier.Diseases;
@@ -8,8 +9,8 @@ namespace World.Environment.Spawn
 {
     public class TreeSpawner : Spawner
     {
-        public int deceaseCounter = 0;
-
+       public int diseaseCounter = 0;
+        private int currentDiseases = 0;
         public TreeSpawner()
         {
             spawnAttempts = 550;
@@ -26,16 +27,12 @@ namespace World.Environment.Spawn
             tree.o2Modifier = Random.Range(tree.o2Modifier * 0.75f, tree.o2Modifier * 1.25f);
             tree.waterConsumption = Random.Range(tree.waterConsumption * 0.75f, tree.waterConsumption * 1.25f);
 
-            if (deceaseCounter < 15)
+            if (currentDiseases<diseaseCounter )
             {
                 tree.AddDisease(new BarkBeetle());
             }
-            else if (Random.Range(0f, 1f) > 0.8f)
-            {
-                tree.AddDisease(new BarkBeetle());
-            }
-
-            deceaseCounter++;
+        
+           currentDiseases++;
 
             RegisterFloraAgent(tree);
 

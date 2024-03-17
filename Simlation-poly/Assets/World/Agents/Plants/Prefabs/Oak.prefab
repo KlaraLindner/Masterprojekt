@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1415813384177042542}
   - component: {fileID: 4902308079864426995}
   - component: {fileID: 4166808602675912921}
+  - component: {fileID: 6296805717703671866}
   m_Layer: 0
   m_Name: Oak
   m_TagString: Untagged
@@ -71,6 +72,9 @@ MonoBehaviour:
   heatResistance: 0
   dryResistance: 0
   xerophyt: 0
+  diseaseCollider: {fileID: 6296805717703671866}
+  diseaseColliderRangeMin: 1
+  diseaseColliderRangeMax: 10
 --- !u!208 &4902308079864426995
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -114,6 +118,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &6296805717703671866
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702408431367692224}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8359890329527294443
 PrefabInstance:
   m_ObjectHideFlags: 0

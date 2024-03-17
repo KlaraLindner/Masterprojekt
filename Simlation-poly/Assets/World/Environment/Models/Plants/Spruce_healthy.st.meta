@@ -1,0 +1,74 @@
+fileFormatVersion: 2
+guid: e94029a7fed3ec643b5a1db9cc20f190
+SpeedTreeImporter:
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spruce_healthys_LOD0
+    second: {fileID: 2100000, guid: 2cc91bd68760c724aa383ff6952d4177, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spruce_healthys_LOD1
+    second: {fileID: 2100000, guid: 2cc91bd68760c724aa383ff6952d4177, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spruce_healthys_LOD2
+    second: {fileID: 2100000, guid: 2cc91bd68760c724aa383ff6952d4177, type: 2}
+  serializedVersion: 6
+  mainColor: {r: 1, g: 1, b: 1, a: 1}
+  hueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
+  alphaTestRef: 0.33
+  bestWindQuality: 4
+  hasBillboard: 1
+  lODSettings:
+  - height: 0.5
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 0
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 0
+    enableSubsurface: 0
+    windQuality: 0
+  - height: 0.25
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 0
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 0
+    enableSubsurface: 0
+    windQuality: 0
+  - height: 0.125
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 0
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 0
+    enableSubsurface: 0
+    windQuality: 0
+  - height: 0.046851564
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 0
+    reflectionProbeUsage: 0
+    enableBump: 0
+    enableHue: 1
+    enableSubsurface: 0
+    windQuality: 0
+  enableSmoothLODTransition: 0
+  animateCrossFading: 1
+  billboardTransitionCrossFadeWidth: 0.25
+  fadeOutWidth: 0.25
+  scaleFactor: 0.15
+  motionVectorModeEnumValue: 0
+  materialVersion: 3
+  materialLocation: 1
+  fileIDType: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using Utility;
 using World.Environment;
@@ -8,7 +9,7 @@ namespace World
     public abstract class WorldObject: MonoBehaviour, ILog, IMouseListener
     {
         public Ground ground;
-        public WorldController world;
+        public WorldController world { get => WorldController.Instance;  }
         
         public abstract string LN();
         

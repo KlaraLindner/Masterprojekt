@@ -242,8 +242,7 @@ namespace World.Environment
             var vec = new Vector2(
                 MathF.Round(pos.x, MidpointRounding.AwayFromZero),
                 MathF.Round(pos.z, MidpointRounding.AwayFromZero));
-            //TODO maybe improvement or perform earlier
-            agent.world = this;
+           
             //agent.ground = Grounds[vec]; //connects the agent with the ground value
             
             //add modifier to world numbers

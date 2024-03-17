@@ -45,8 +45,8 @@ public class CSVtoWeather : MonoBehaviour
         {
             currentWeatherList.weatherData[i] = new WeatherData();
             currentWeatherList.weatherData[i].dateTime = data[4 * (i + 1)];
-            currentWeatherList.weatherData[i].temperature = int.Parse(data[4 * (i + 1) + 1]);
-            currentWeatherList.weatherData[i].humidity = int.Parse(data[4 * (i + 1) + 2]);
+            currentWeatherList.weatherData[i].temperature = (data[4 * (i + 1) + 1] is "")? Int32.MinValue : int.Parse(data[4 * (i + 1) + 1]);
+            currentWeatherList.weatherData[i].humidity = (data[4 * (i + 1) + 2] is "")? Int32.MinValue :int.Parse(data[4 * (i + 1) + 2]);
             currentWeatherList.weatherData[i].weather = data[4 * (i + 1) + 3];
         }
 

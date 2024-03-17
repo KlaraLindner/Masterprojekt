@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
+using NaughtyAttributes.Test;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Utility;
 using World.Agents.Modifier;
 using World.Environment;
@@ -8,6 +11,7 @@ using World.Structure;
 
 namespace World.Agents
 {
+   
     public abstract class Agent : WorldObject
     {
         /// <summary>
@@ -86,17 +90,27 @@ namespace World.Agents
         /// </summary>
         [Tooltip("List of injuries of agent")]
         public List<Injury> injuries = new();
-        /// <summary>
-        /// List of diseases modifiers of the agent
-        /// </summary>
-        [Tooltip("List of diseases of agent")]
-        public List<Disease> diseases = new();
 
+        /// <summary>
+        /// Struct of diseases modifiers of the agent
+        /// </summary>
+        [Tooltip("List of diseases of agent")] 
+        public List<Disease> diseases;
+        
+            
         /// <summary>
         /// Behaviour of the agent
         /// </summary>
         [Tooltip("Behaviour of the agent")]
         public IAgentBehaviour behaviour;
+        
+        [Tooltip("EventHandler")]
+        /// <summary>
+        /// Handler for changing the tree apperance
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="e"></param>
+        public event EventHandler<GenEventArgs<Disease>> onDiseaseStatusChanged;
         
         /// <summary>
         /// Event gets fired when the agents loses health
@@ -116,7 +130,13 @@ namespace World.Agents
         ///  Function to handle the agent and check the states
         /// </summary>
         public abstract void OnHandle(WorldController world);
-        
+
+        public virtual void OnDisease(object s, float diseaseProgress, GenEventArgs<Disease> e)
+        {
+            diseases[0].progress = diseaseProgress;
+            onDiseaseStatusChanged?.Invoke(s,e);
+            
+        }
         /// <summary>
         /// Event gets fired when the agents has no health
         /// </summary>

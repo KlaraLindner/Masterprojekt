@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Utility;
 using World.Agents.Modifier;
 using World.Environment;
@@ -18,7 +19,6 @@ namespace World.Agents
         protected FloraAgent(Ground ground)
         {
             this.ground = ground;
-            world = ground.RefWorld();
         }
 
         public override void OnHandle(WorldController world)
@@ -44,8 +44,7 @@ namespace World.Agents
             health += e.Value;
             if (health <= 0)
             {
-                //TODO try to define world on spawn!
-                world = WorldController.Instance;
+           
                 OnDeath(this, EventArgs.Empty);
             }
         }
@@ -65,9 +64,11 @@ namespace World.Agents
 
         }
 
-        public void AddDisease(Disease d)
-        {
-            (diseases ?? new List<Disease>()).Add(d);
+        public virtual void AddDisease(Disease d)
+        { 
+            diseases ??= new List<Disease>();
+            diseases.Add(d);
+
         }
     }
 }

@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
 using World.Agents;
-using World.Environment;
 using Random = UnityEngine.Random;
 
-namespace Utility
+namespace World.Environment
 {
     /// <summary>
     /// Interface for plantSpawner to 
@@ -41,9 +40,12 @@ namespace Utility
                     continue;
                 }
                 
-                if (hit.point.y < minHeight || hit.point.y > maxHeight) continue;
-                
+                if (hit.point.y < minHeight || hit.point.y > maxHeight || objs==null || objs.Length==0)
+                    continue;
+                 
                 var obj = Random.Range(0, objs.Length);
+                if(objs.Length<obj)
+                    continue;
                 SpawnOptions(objs[obj], hit);
             }
         }

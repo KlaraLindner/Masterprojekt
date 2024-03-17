@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 263.2012, g: 326.3345, b: 432.20807, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14669,12 +14669,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551492071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 6312.4507
+  m_Intensity: 1
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -14796,7 +14796,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.91214913, b: 0.8349056, a: 1}
-  m_Intensity: 6312.4507
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14853,7 +14853,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551492071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
@@ -17517,6 +17517,7 @@ GameObject:
   - component: {fileID: 658440923}
   - component: {fileID: 658440925}
   - component: {fileID: 658440926}
+  - component: {fileID: 658440927}
   m_Layer: 10
   m_Name: Ground
   m_TagString: Untagged
@@ -17585,7 +17586,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 1e0aa3575a5d57d4e9c1b8543bfbb137, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -17656,6 +17657,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &658440927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658440921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48da822e3a7a4f14a8e38e8a2fd20e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tex: {fileID: 2800000, guid: 0d5701fbc9dac054d9a84841100db8f9, type: 3}
+  _freeLookUserInput: {fileID: 3163200917007084430}
 --- !u!1 &661645909
 GameObject:
   m_ObjectHideFlags: 0
@@ -18089,8 +18104,8 @@ MonoBehaviour:
   minHeight: 3.5
   maxHeight: 7.5
   objs:
-  - {fileID: 5702408431367692224, guid: 5f40e2c594dd9254cb4d0d8819347e67, type: 3}
-  deceaseCounter: 0
+  - {fileID: 7957993532143662865, guid: 4652f8fabca4f804f9ce39ae1dea69b2, type: 3}
+  diseaseCounter: 4
 --- !u!1 &675010818
 GameObject:
   m_ObjectHideFlags: 0

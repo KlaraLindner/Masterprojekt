@@ -103,13 +103,13 @@ namespace World.Environment
             var tempPair = MonthToTemperature((TimeHandler.Months)time.month);
 
             // Example
-            // min = -7 - Rand(0, 7 * 0.25) == -7 - 1.5 = -8.5°C
+            // min = -7 - Rand(0, 0.25 * 7 ) == -7 - 1.5 = -8.5°C
             //TODO include cloudCover and humidity to this formula
             minDayTemperature = tempPair.Item1-Random.Range(0, Math.Abs(weatherMinMultiplier*tempPair.Item1));
             // Example
-            // max = 4 + Rand(0, 4 * 0.35) == 4 + 1.3 = 5.3°C
+            // max = 4 + Rand(0,  0.35 * 4 ) == 4 + 1.3 = 5.3°C
             //TODO include cloudCover and humidity to this formula
-            maxDayTemperature = tempPair.Item2+Random.Range(0, Math.Abs(weatherMaxMultiplier*tempPair.Item1));
+            maxDayTemperature = tempPair.Item2+Random.Range(0, Math.Abs(weatherMaxMultiplier*tempPair.Item2));
         }
         
         private void OnHourElapsed(object sender, HourElapsedEventArgs e)
