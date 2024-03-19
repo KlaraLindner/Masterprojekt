@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Globalization;
+using System.Collections.Generic;
 using NaughtyAttributes;
+using NaughtyAttributes.Test;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Rendering;
@@ -7,12 +10,20 @@ using UnityEngine.Rendering.HighDefinition;
 using Utility;
 using World.Player.GUI;
 using World.Structure;
+using static WeatherCSVReader;
 using Random = UnityEngine.Random;
+using UnityEditor.VersionControl;
+using UnityEngine.Localization.SmartFormat.Core.Parsing;
 
 namespace World.Environment
 {
     public class ClimateHandler : MonoBehaviour, ILog
     {
+       
+        public WeatherData weatherData;
+        private List<WeatherData> weatherDataset;
+        bool datasetEnded = false;
+
         public static ClimateHandler Instance;
         public WindZone wind;
         public GameObject water;
@@ -81,7 +92,9 @@ namespace World.Environment
 
         private void Start()
         {
-            //
+            //weatherDataset = WeatherData.dataSet;
+            weatherData.ReadCSV(); //
+            weatherDataset = weatherData.GetWeatherList();
             time = TimeHandler.Instance;
             time.TimeChangedToMidnight += OnDayChange;
             time.TimeHourElapsed += OnHourElapsed;
@@ -94,7 +107,10 @@ namespace World.Environment
             
             OnDayChange(this, EventArgs.Empty);
             OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
+
         }
+
+
 
         private void OnDayChange(object sender, EventArgs e)
         {
@@ -103,11 +119,11 @@ namespace World.Environment
             var tempPair = MonthToTemperature((TimeHandler.Months)time.month);
 
             // Example
-            // min = -7 - Rand(0, 0.25 * 7 ) == -7 - 1.5 = -8.5°C
+            // min = -7 - Rand(0, 0.25 * 7) == -7 - 1.5 = -8.5°C
             //TODO include cloudCover and humidity to this formula
             minDayTemperature = tempPair.Item1-Random.Range(0, Math.Abs(weatherMinMultiplier*tempPair.Item1));
             // Example
-            // max = 4 + Rand(0,  0.35 * 4 ) == 4 + 1.3 = 5.3°C
+            // max = 4 + Rand(0, 0.35 * 4) == 4 + 1.3 = 5.3°C
             //TODO include cloudCover and humidity to this formula
             maxDayTemperature = tempPair.Item2+Random.Range(0, Math.Abs(weatherMaxMultiplier*tempPair.Item2));
         }
@@ -240,15 +256,77 @@ namespace World.Environment
 
         public void SetTemperature(float value = -1)
         {
+            /*String dateFormat = "yyyy-MM-dd HH";
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            */
+
+            DateTime tmpTime = time.date;
+            string gameTimeString = tmpTime.ToString();
+            gameTimeString = gameTimeString.Substring(0, gameTimeString.IndexOf(" ") + 1);
+
+            // Values of 00 Hour are currently ignored because of OnDayChange??? or TimeHandler???
+            string tmpHour;
+            if (time.LocalTime.Hour < 10)
+            {
+                tmpHour = "0" + time.LocalTime.Hour.ToString();
+            }
+            else
+            {
+                tmpHour = time.LocalTime.Hour.ToString();
+            }
+
+            gameTimeString += tmpHour;
+
+            /*try
+            {
+                tmpTime = DateTime.ParseExact(gameTimeString, dateFormat, provider);
+                Console.WriteLine("{0} converts to {1}.", gameTimeString, tmpTime.ToString());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("{0} is not in the correct format.", gameTimeString);
+            }
+            */
+
+            //Check if WeatherDataset has such a DateTime and set the temperature of this row
+            if (weatherDataset.Count > 0 && !datasetEnded)
+            {
+                for (int i = 0; i < weatherDataset.Count; i++)
+                {
+                    if (i == weatherDataset.Count -1)
+                    {
+                        datasetEnded = true;
+                    }
+
+                    string csvTimeString = weatherDataset[i].dateTime.ToString();
+
+                    //DateTime listTime = DateTime.ParseExact(csvTimeString, "yyyy-MM-dd HH",
+                    //                       System.Globalization.CultureInfo.InvariantCulture);
+
+                    csvTimeString = csvTimeString.Substring(0, csvTimeString.IndexOf(":"));
+
+                    if (csvTimeString.Equals(gameTimeString))
+                    {
+                        temperature = weatherDataset[i].temperature;
+
+                        break;
+
+                    }
+                }
+            }
+            else
+            {
+                //temperature
+                temperature = value == -1 ? temperature : value + value * WeatherToTemperatureMultiplier(weather);
+            }
             //temperature
-            temperature = value == -1 ? temperature : value + value * WeatherToTemperatureMultiplier(weather);
             ui.guiWeatherController.OnTempChange(new GenEventArgs<string>(temperature.ToString("0.00")));
             //windchill
             ui.guiWeatherController.OnTempFeelChange(new GenEventArgs<string>((
                 13.12f + 0.6215f * temperature + (0.3965f * temperature - 11.37f) * MathF.Pow(windSpeed * 3.6f, 0.16f)
             ).ToString("0.00")));
             TemperatureChanged?.Invoke(this, new GenEventArgs<float>(temperature));
-        }
+        }   
 
         /// <summary>
         /// 
