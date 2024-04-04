@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using World.Environment;
 using World.Structure;
 
@@ -7,7 +8,8 @@ namespace World.Agents.Plants
 {
     public class Spruce : TreeAgent
     {
-        public Color colortest;
+        public Color moistureColor;
+        public Color groundColor;
         public Spruce(Ground ground) : base(ground)
         {
             domain = "Eukarya";
@@ -32,7 +34,7 @@ namespace World.Agents.Plants
 
         public override void OnHandle(WorldController world)
         {   //TODO: Must be replaced with a raycast later!
-           
+           Debug.Log("OnHandle");
             base.OnHandle(world);
             HandleEnvironment(world);
             HandleBarkbeelte();
@@ -47,7 +49,8 @@ namespace World.Agents.Plants
 
         public void HandleGround()
         {
-          colortest = GroundProperties.Instance.GetGroundInfo(transform.position);   
+          moistureColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.moisture);   
+          groundColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.ground);   
         }
         public void HandleBarkbeelte()
         {

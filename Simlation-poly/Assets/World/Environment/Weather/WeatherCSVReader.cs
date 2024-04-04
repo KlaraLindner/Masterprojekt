@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using System;
 using JetBrains.Annotations;
+using NaughtyAttributes;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using static WeatherCSVReader;
 
 public class WeatherCSVReader : MonoBehaviour
@@ -12,35 +14,36 @@ public class WeatherCSVReader : MonoBehaviour
     [System.Serializable]
     public class WeatherData
     {
-        public List<WeatherData> dataSet;
-
-        public DateTime dateTime;
+        public string dateTime;
         public float temperature;
         public float precipitation;
         public float soilMoisture;
-
-
+        public float fieldCapacity;
+    }
+    public List<WeatherData> dataSet = new List<WeatherData>();
+    
         // Start is called before the first frame update
+
         void Start()
         {
 
             //filename = Application.dataPath + "/weather.csv";
-            ReadCSV();
+           
         }
 
-        public List<WeatherData> GetWeatherList()
+        public List<WeatherData> WeatherDatas
         {
-            return dataSet;
+            get { return dataSet; }
         }
-
-        public void ReadCSV()
-        {
+        [Button]
+        public List<WeatherData>ReadCSV()
+        {   
             // LOAD CSV Data from Assets/Resources with name below v_v_v
             TextAsset csvData = Resources.Load<TextAsset>("temperatur_bodenfeuchte_niederschlag");
             string[] data = csvData.text.Split(new String[] { ";", "\n" }, StringSplitOptions.None);
-
+          
             int tableSize = data.Length / 4 - 10;
-
+    
             dataSet = new List<WeatherData>();
 
             for (int i = 0; i < tableSize; i++)
@@ -54,15 +57,15 @@ public class WeatherCSVReader : MonoBehaviour
                 */
                 dataSet.Add(new WeatherData 
                     {
-                    dateTime = DateTime.Parse(data[4 * (i + 10)]),
+                    dateTime = (data[4 * (i + 10)]),
                     temperature = float.Parse(data[4 * (i + 10) + 1]),
                     precipitation = float.Parse(data[4 * (i + 10) + 2]),
                     soilMoisture = float.Parse(data[4 * (i + 10) + 3])
                     }
                 );
             }
+            return dataSet;
         }
-    }
 }
 /*
 

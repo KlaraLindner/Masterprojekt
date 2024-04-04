@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using NaughtyAttributes.Test;
 using UnityEngine;
@@ -14,17 +15,22 @@ using static WeatherCSVReader;
 using Random = UnityEngine.Random;
 using UnityEditor.VersionControl;
 using UnityEngine.Localization.SmartFormat.Core.Parsing;
+using UnityEngine.Serialization;
 
 namespace World.Environment
 {
     public class ClimateHandler : MonoBehaviour, ILog
     {
        
-        public WeatherData weatherData;
-        private List<WeatherData> weatherDataset;
+        public WeatherCSVReader weatherCsvReader;
+        public List<WeatherData> WeatherDataset
+        {
+            get => weatherCsvReader.WeatherDatas;
+        }
         bool datasetEnded = false;
 
         public static ClimateHandler Instance;
+        public Dictionary<string, WeatherData> weatherOnTime = new Dictionary<string, WeatherData>();
         public WindZone wind;
         public GameObject water;
         public Volume clouds;
@@ -47,7 +53,12 @@ namespace World.Environment
         public ClimateZone zone = ClimateZone.HumidTemperate;
         [OnValueChanged("SetWeather")]
         public Weather weather = Weather.Clear;
-
+        public float fieldCapacity = 0.5f; //% of usable soil moisture
+        public float[] FieldCapacities
+        {
+            get;
+            set;
+        } 
         public GUIController ui;
 
         public AudioClip daySound;
@@ -62,6 +73,7 @@ namespace World.Environment
         public float weatherMinMultiplier = 0.25f; //%
         public float weatherMaxMultiplier = 0.35f; //%
 
+        private string gameTimeString = "";
         //Events
         public event EventHandler<GenEventArgs<float>> TemperatureChanged;
         
@@ -92,9 +104,7 @@ namespace World.Environment
 
         private void Start()
         {
-            //weatherDataset = WeatherData.dataSet;
-            weatherData.ReadCSV(); //
-            weatherDataset = weatherData.GetWeatherList();
+
             time = TimeHandler.Instance;
             time.TimeChangedToMidnight += OnDayChange;
             time.TimeHourElapsed += OnHourElapsed;
@@ -102,7 +112,7 @@ namespace World.Environment
             //sound effects
             time.TimeChangedToDawn += OnTimeChangedToDawn;
             time.TimeChangedToNight += OnTimeChangedToDusk;
-
+            GetWeatherOnTime();
             SetTemperature();
             
             OnDayChange(this, EventArgs.Empty);
@@ -254,6 +264,33 @@ namespace World.Environment
             SetWeather(weather);
         }
 
+        public float[] GetWeatherOnTime()
+        {
+            FieldCapacities = new float[WeatherDataset.Count];
+            //Check if WeatherDataset has such a DateTime and set the temperature of this row
+            if (WeatherDataset.Count <= 0 || datasetEnded)
+                return Array.Empty<float>();
+            
+            for (int i = 0; i < WeatherDataset.Count; i++)
+            {
+                if (i == WeatherDataset.Count - 1)
+                {
+                    datasetEnded = true;
+                }
+
+                string csvTimeString = WeatherDataset[i].dateTime;
+
+                csvTimeString = csvTimeString.Substring(0, csvTimeString.IndexOf(":"));
+                    
+                    float soilMoisture = WeatherDataset[i].soilMoisture;
+                    FieldCapacities[i] = SetFieldCapacity(soilMoisture);
+                    WeatherDataset[i].fieldCapacity = FieldCapacities[i];
+                    weatherOnTime.Add(csvTimeString,WeatherDataset[i]);
+            }
+        
+
+            return FieldCapacities;
+        }
         public void SetTemperature(float value = -1)
         {
             /*String dateFormat = "yyyy-MM-dd HH";
@@ -261,7 +298,7 @@ namespace World.Environment
             */
 
             DateTime tmpTime = time.date;
-            string gameTimeString = tmpTime.ToString();
+            gameTimeString =tmpTime.ToString();
             gameTimeString = gameTimeString.Substring(0, gameTimeString.IndexOf(" ") + 1);
 
             // Values of 00 Hour are currently ignored because of OnDayChange??? or TimeHandler???
@@ -288,37 +325,18 @@ namespace World.Environment
             }
             */
 
-            //Check if WeatherDataset has such a DateTime and set the temperature of this row
-            if (weatherDataset.Count > 0 && !datasetEnded)
+
+            if(weatherOnTime.Count!=0&&weatherOnTime.SingleOrDefault(s => s.Key == gameTimeString).Value is { } weatherData)
             {
-                for (int i = 0; i < weatherDataset.Count; i++)
-                {
-                    if (i == weatherDataset.Count -1)
-                    {
-                        datasetEnded = true;
-                    }
-
-                    string csvTimeString = weatherDataset[i].dateTime.ToString();
-
-                    //DateTime listTime = DateTime.ParseExact(csvTimeString, "yyyy-MM-dd HH",
-                    //                       System.Globalization.CultureInfo.InvariantCulture);
-
-                    csvTimeString = csvTimeString.Substring(0, csvTimeString.IndexOf(":"));
-
-                    if (csvTimeString.Equals(gameTimeString))
-                    {
-                        temperature = weatherDataset[i].temperature;
-
-                        break;
-
-                    }
-                }
+                temperature = weatherData.temperature;
+                fieldCapacity = weatherData.fieldCapacity;
             }
             else
             {
                 //temperature
                 temperature = value == -1 ? temperature : value + value * WeatherToTemperatureMultiplier(weather);
             }
+
             //temperature
             ui.guiWeatherController.OnTempChange(new GenEventArgs<string>(temperature.ToString("0.00")));
             //windchill
@@ -327,6 +345,13 @@ namespace World.Environment
             ).ToString("0.00")));
             TemperatureChanged?.Invoke(this, new GenEventArgs<float>(temperature));
         }   
+        //TODO: What if moisture <=0.17?
+        private float SetFieldCapacity (float moisture)
+        {
+            //Based on comparison of Basel and Freiburg data the soil value should be 0.38 = 100% field capacity
+          
+            return fieldCapacity = moisture / 0.38f * 100;
+        }
 
         /// <summary>
         /// 
