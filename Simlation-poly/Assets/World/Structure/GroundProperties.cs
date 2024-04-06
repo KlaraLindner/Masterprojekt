@@ -14,6 +14,7 @@ using World.Structure;
 public enum GroundTypes{moisture, ground, surface}
 public class GroundProperties : MonoBehaviour
 {   
+    public Texture2D moistureTex_All;
     public Texture2D moistureTex;
     public Texture2D groundTex;
     public FreeLookUserInput _freeLookUserInput;
@@ -79,7 +80,7 @@ public class GroundProperties : MonoBehaviour
         
     }   
     public Color GetGroundInfo(Vector3 objectPos, GroundTypes groundTypes)
-    {
+    { 
         Texture2D tex = TypeToTexture(groundTypes);
        Vector3 startcorners = Vector3.zero;
        

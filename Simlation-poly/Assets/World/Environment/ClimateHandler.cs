@@ -112,7 +112,7 @@ namespace World.Environment
             //sound effects
             time.TimeChangedToDawn += OnTimeChangedToDawn;
             time.TimeChangedToNight += OnTimeChangedToDusk;
-            GetWeatherOnTime();
+            InitializeWeatherOnTime();
             SetTemperature();
             
             OnDayChange(this, EventArgs.Empty);
@@ -264,7 +264,7 @@ namespace World.Environment
             SetWeather(weather);
         }
 
-        public float[] GetWeatherOnTime()
+        public float[] InitializeWeatherOnTime()
         {
             FieldCapacities = new float[WeatherDataset.Count];
             //Check if WeatherDataset has such a DateTime and set the temperature of this row
@@ -293,9 +293,6 @@ namespace World.Environment
         }
         public void SetTemperature(float value = -1)
         {
-            /*String dateFormat = "yyyy-MM-dd HH";
-            CultureInfo provider = CultureInfo.InvariantCulture;
-            */
 
             DateTime tmpTime = time.date;
             gameTimeString =tmpTime.ToString();
@@ -313,18 +310,7 @@ namespace World.Environment
             }
 
             gameTimeString += tmpHour;
-
-            /*try
-            {
-                tmpTime = DateTime.ParseExact(gameTimeString, dateFormat, provider);
-                Console.WriteLine("{0} converts to {1}.", gameTimeString, tmpTime.ToString());
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("{0} is not in the correct format.", gameTimeString);
-            }
-            */
-
+            
 
             if(weatherOnTime.Count!=0&&weatherOnTime.SingleOrDefault(s => s.Key == gameTimeString).Value is { } weatherData)
             {

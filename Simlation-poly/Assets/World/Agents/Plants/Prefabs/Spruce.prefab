@@ -77,6 +77,8 @@ MonoBehaviour:
   diseaseCollider: {fileID: 3311739013563679984}
   diseaseColliderRangeMin: 5
   diseaseColliderRangeMax: 25
+  moistureColor: {r: 0, g: 0, b: 0, a: 0}
+  groundColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &7145165342439383790
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -15,13 +15,13 @@ public class TerrainTex: MonoBehaviour
      [SerializeField] private ClimateHandler _climateHandler;
     [SerializeField] private Terrain terrain;
     [SerializeField]  Color[] moistureColors;
+    [SerializeField] private GroundProperties _groundProperties;
     private float[] fieldCapacaty;
    
-    //TODO:
-    // * 
-    //
-    // * for each cell, take moisture and give it a color based on a gradient 
-    //
+   /// <summary>
+   /// 
+   /// </summary>
+   /// <returns></returns>
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(1);
@@ -29,21 +29,18 @@ public class TerrainTex: MonoBehaviour
     }
 
     private void HumidityToColor(object sender, HourElapsedEventArgs e)
-    {
+    {   
         float fieldCapa = _climateHandler.fieldCapacity;
-        moistureColors[0]= moistureColorScheme.Evaluate(fieldCapa/100);
+        Color[] moistureColors = {moistureColorScheme.Evaluate(fieldCapa/100)};
+        _groundProperties.SetMoistureColor(moistureColors);
     }
-
-    private void OnDisable()
-    {
-        throw new NotImplementedException();
-    }
+    
     
     [Button]    
     private void AllHumidityToColor()
     {   
        float sizeInX =terrain.terrainData.size.x;
-       fieldCapacaty = _climateHandler.GetWeatherOnTime();
+       fieldCapacaty = _climateHandler.InitializeWeatherOnTime();
        float fieldCapacatyLength= fieldCapacaty.Length;
        moistureColors = new Color[Mathf.CeilToInt(fieldCapacatyLength )];
        float cellSizeRatio = sizeInX / fieldCapacatyLength;
@@ -55,7 +52,7 @@ public class TerrainTex: MonoBehaviour
           moistureColors[i]= moistureColorScheme.Evaluate((float)fieldCapacaty[i]/100);
 
        }
-       GroundProperties.Instance.SetMoistureColor(moistureColors);
+       _groundProperties.SetMoistureColor(moistureColors);
        
     }
     
