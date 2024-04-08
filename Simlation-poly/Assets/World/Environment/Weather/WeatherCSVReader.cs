@@ -57,7 +57,7 @@ public class WeatherCSVReader : MonoBehaviour
                 */
                 dataSet.Add(new WeatherData 
                     {
-                    dateTime = (data[4 * (i + 10)]),
+                    dateTime =  DateTime.Parse(data[4 * (i + 10)]).ToString(),
                     temperature = float.Parse(data[4 * (i + 10) + 1]),
                     precipitation = float.Parse(data[4 * (i + 10) + 2]),
                     soilMoisture = float.Parse(data[4 * (i + 10) + 3])

@@ -33,12 +33,12 @@ namespace World.Agents.Plants
         }
 
         public override void OnHandle(WorldController world)
-        {   //TODO: Must be replaced with a raycast later!
-           Debug.Log("OnHandle");
+        {   
             base.OnHandle(world);
             HandleEnvironment(world);
+            dryResistance= HandleGround();
             HandleBarkbeelte();
-            HandleGround();
+           
         }
 
         public void HandleEnvironment( WorldController world)
@@ -47,10 +47,11 @@ namespace World.Agents.Plants
             
         }
 
-        public void HandleGround()
+        public float HandleGround()
         {
           moistureColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.moisture);   
-          groundColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.ground);   
+          groundColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.ground);
+          return ClimateHandler.Instance.fieldCapacity;
         }
         public void HandleBarkbeelte()
         {

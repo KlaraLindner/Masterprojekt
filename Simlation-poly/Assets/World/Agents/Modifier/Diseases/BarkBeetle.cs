@@ -5,14 +5,15 @@ namespace World.Agents.Modifier.Diseases
 {
     public class BarkBeetle: Disease
     {
+      
         public BarkBeetle() : base("BarkBeetle")
         {
-            
+            HumidityRange = new Vector2(0, 40);
+            TemperatureRange = new Vector2(16.5f, 50);
         }
         
         public override void OnInit(Agent sender, EventArgs e)
-        {   //TODO: Change to Barkbeetle Data!
-            barkBeetleData =(TextAsset)Resources.Load("SomeData");
+        {   
         }
 
         public override void OnCall(Agent sender, EventArgs e)

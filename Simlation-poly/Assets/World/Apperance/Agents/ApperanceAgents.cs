@@ -132,7 +132,5 @@ public class ApperanceAgents : MonoBehaviour
       propertyBlock.SetFloat("_AlphaClipThreshold", Mathf.Lerp(0.1f, 0.95f, progress));
      
        currentRenderer.SetPropertyBlock(propertyBlock);
-     
-      
    }
 }

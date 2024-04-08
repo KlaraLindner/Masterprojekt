@@ -277,15 +277,17 @@ namespace World.Environment
                 {
                     datasetEnded = true;
                 }
-
+                
+                
                 string csvTimeString = WeatherDataset[i].dateTime;
-
+                
                 csvTimeString = csvTimeString.Substring(0, csvTimeString.IndexOf(":"));
-                    
+                csvTimeString= csvTimeString.Replace("T", " ");
                     float soilMoisture = WeatherDataset[i].soilMoisture;
                     FieldCapacities[i] = SetFieldCapacity(soilMoisture);
                     WeatherDataset[i].fieldCapacity = FieldCapacities[i];
                     weatherOnTime.Add(csvTimeString,WeatherDataset[i]);
+                   
             }
         
 
@@ -311,8 +313,7 @@ namespace World.Environment
 
             gameTimeString += tmpHour;
             
-
-            if(weatherOnTime.Count!=0&&weatherOnTime.SingleOrDefault(s => s.Key == gameTimeString).Value is { } weatherData)
+            if(weatherOnTime.Count!=0&&weatherOnTime.SingleOrDefault(s => s.Key.Equals(gameTimeString)).Value is { } weatherData)
             {
                 temperature = weatherData.temperature;
                 fieldCapacity = weatherData.fieldCapacity;

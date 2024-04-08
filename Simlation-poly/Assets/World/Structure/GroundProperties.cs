@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -65,14 +67,15 @@ public class GroundProperties : MonoBehaviour
             for (int y = 0; y < textureHeight-1; y++)
             {    colorCoutner+= ratio;
                 // Set the color for all pixels in the y direction
-                pixels[y * textureWidth+ x] = colors[Mathf.FloorToInt(colorCoutner)];
+                pixels[x * textureWidth+ y] = colors[Mathf.FloorToInt(colorCoutner)];
             }
         }
 
         // Set pixel colors in the texture
         moistureTex.SetPixels(pixels);
         moistureTex.Apply();
-    
+       string path = AssetDatabase.GetAssetPath(moistureTex);
+       File.WriteAllBytes(path, moistureTex.EncodeToPNG());
     }
 
     public void GetGroundColor()

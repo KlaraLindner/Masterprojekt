@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using Utility;
 using World.Agents.Modifier;
@@ -64,11 +65,13 @@ namespace World.Agents
 
         }
 
-        public virtual void AddDisease(Disease d)
-        { 
-            diseases ??= new List<Disease>();
-            diseases.Add(d);
-
+        public virtual void TryAddDisease(Disease d)
+        {        
+                diseases ??= new List<Disease>();
+                
+                if (diseases.Contains(d))
+                    return;
+                diseases.Add(d);
         }
     }
 }

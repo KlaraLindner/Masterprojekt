@@ -29,7 +29,7 @@ namespace World.Environment.Spawn
 
             if (currentDiseases<diseaseCounter )
             {
-                tree.AddDisease(new BarkBeetle());
+                tree.TryAddDisease(new BarkBeetle());
             }
         
            currentDiseases++;
