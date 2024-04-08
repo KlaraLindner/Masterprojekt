@@ -1,4 +1,4 @@
-Zur Ausführung wird die Unityversion 2022.3.6f1 benötigt.
+Zur Ausführung wird die Unity-Version 2022.3.6f1 benötigt.
 Dieses Projekt wurde auf Windows 10 getestet.
 
 Installation unter:
