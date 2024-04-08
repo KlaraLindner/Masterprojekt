@@ -9,6 +9,6 @@ mit einem directionalLight und der MainCamera zu sehen sein,
 muss im Projekt die Simulation.unity Szene angeklickt werden, 
 dann wird die richtige Szene geladen.
 
-Zum anschauen der visuellen Ausbreitung des Borkekäfers nach dem 
+Zum anschauen der visuellen Ausbreitung des Borkenkäfers nach dem 
 drücken der Play-Taste oben rechts in der Leiste rechts neben "stats"
 Gizmos anwählen.
