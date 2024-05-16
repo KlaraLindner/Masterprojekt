@@ -37,7 +37,6 @@ namespace World.Agents.Plants
             base.OnHandle(world);
             HandleEnvironment(world);
             dryResistance= HandleGround();
-            HandleBarkbeelte();
            
         }
 
@@ -53,11 +52,7 @@ namespace World.Agents.Plants
           groundColor = GroundProperties.Instance.GetGroundInfo(transform.position, GroundTypes.ground);
           return ClimateHandler.Instance.fieldCapacity;
         }
-        public void HandleBarkbeelte()
-        {
-            
-            
-        }
+      
     }
    
 }

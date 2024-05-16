@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using NaughtyAttributes;
 using UnityEditor;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -74,8 +73,8 @@ public class GroundProperties : MonoBehaviour
         // Set pixel colors in the texture
         moistureTex.SetPixels(pixels);
         moistureTex.Apply();
-       string path = AssetDatabase.GetAssetPath(moistureTex);
-       File.WriteAllBytes(path, moistureTex.EncodeToPNG());
+       //string path = AssetDatabase.GetAssetPath(moistureTex);
+      // File.WriteAllBytes(path, moistureTex.EncodeToPNG());
     }
 
     public void GetGroundColor()
@@ -120,7 +119,7 @@ public class GroundProperties : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(hitPos,5f);
-     /*   // Calculate the corners of the BoxCollider in world space
+       // Calculate the corners of the BoxCollider in world space
         Vector3 startPoint = transform.position - startBounds;
         Vector3 startVector =   startPoint-transform.position;
 
@@ -133,7 +132,7 @@ public class GroundProperties : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position,rotatedVector);
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(finalPoint, 2);*/
+        Gizmos.DrawSphere(finalPoint, 2);
   
     }
 

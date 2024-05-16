@@ -95,7 +95,7 @@ namespace World.Agents
         /// Struct of diseases modifiers of the agent
         /// </summary>
         [Tooltip("List of diseases of agent")] 
-        public List<Disease> diseases;
+        public List<Disease> diseases = new ();
         
             
         /// <summary>

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Build.Pipeline;
+using System.Linq;
 using UnityEngine;
 using Utility;
 using World.Agents.Modifier;
+using World.Agents.Modifier.Diseases;
 using World.Environment;
 using World.Structure;
 
@@ -69,7 +70,7 @@ namespace World.Agents
         {        
                 diseases ??= new List<Disease>();
                 
-                if (diseases.Contains(d))
+                if(diseases.Any(x=>x.GetType() == d.GetType()))
                     return;
                 diseases.Add(d);
         }

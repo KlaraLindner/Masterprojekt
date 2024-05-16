@@ -5,8 +5,6 @@ using System.IO;
 using System;
 using JetBrains.Annotations;
 using NaughtyAttributes;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
-using static WeatherCSVReader;
 
 public class WeatherCSVReader : MonoBehaviour
 {

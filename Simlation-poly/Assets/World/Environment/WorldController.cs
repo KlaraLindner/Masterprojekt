@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using NaughtyAttributes;
 using Player;
-using UnityEditor;
+
 using UnityEngine;
 using Utility;
 using World.Agents;
@@ -98,9 +98,9 @@ namespace World.Environment
             //init UI 
             player.UpdateStatisticsValue();
             
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
             UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
-//#endif
+#endif
 //            GetComponent<NavMeshSurface>().BuildNavMesh();
         }
         

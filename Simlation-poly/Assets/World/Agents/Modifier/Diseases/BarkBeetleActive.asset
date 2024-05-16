@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   humidityRage: {x: 0, y: 40}
   temperatureRange: {x: 15.552975, y: 50}
-  seasonRange: {x: 0, y: 0}
+  seasonRange: {x: 4, y: 10}

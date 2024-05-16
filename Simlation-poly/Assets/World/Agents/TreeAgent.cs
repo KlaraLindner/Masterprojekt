@@ -44,9 +44,9 @@ namespace World.Agents
             //Set the new size of the spread collider based on the disease's progress
             diseaseCollider.radius = Mathf.Lerp(diseaseColliderRangeMin, diseaseColliderRangeMax, diseaseProgress);
             //Tickcounter adds up by the average time
-            tickCounter += Time.deltaTime;
+            tickCounter += Time.deltaTime/2;
             //the progress is determined by the size of the radius, the larger the area can be, the longer it takes to fully spread
-            diseaseProgress = tickCounter / (diseaseColliderRangeMax*2);
+            diseaseProgress = tickCounter / (diseaseColliderRangeMax);
             //Inform other methods subscribed to the disease event of it's progress
             OnDisease(this, diseaseProgress, new GenEventArgs<Disease>(diseases[0]));
             }

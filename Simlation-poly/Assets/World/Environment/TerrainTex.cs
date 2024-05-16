@@ -88,7 +88,7 @@ public  class TerrainTex: MonoBehaviour
             Gizmos.color = moistureColors[i];
             Gizmos.DrawSphere(transform.position+new Vector3(counter,temp*3f,0), 0.5f);
             if(fieldCapacaty.Length!=0)
-            Handles.Label(transform.position+new Vector3(counter,temp*3f+3f,0), fieldCapacaty[i].ToString("F2"));
+            //Handles.Label(transform.position+new Vector3(counter,temp*3f+3f,0), fieldCapacaty[i].ToString("F2"));
             counter++;
         }
     }
